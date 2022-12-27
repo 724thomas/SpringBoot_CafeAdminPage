@@ -4,19 +4,22 @@
 <mapper namespace="com.cafe.admin.mapper.CustomerMapper">
 
     <select id="selectAdmin" parameterType="com.cafe.admin.dto.AdminDTO" resultType="com.cafe.admin.dto.AdminDTO">
-
+        select * from admin
+        where id=#{id} and password=#{password}
     </select>
 
     <select id="selectAllCustomers" resultType="com.cafe.admin.dto.CustomerDTO">
-
+        select * from customer
     </select>
 
     <update id="customerStatus" parameterType="com.cafe.admin.dto.CustomerDTO">
-
+        Update customer
+        set ismem = #{ismem}
+        where id = #{id}
     </update>
 
     <select id="selectOrderBook" resultType="com.cafe.admin.dto.OrderDTO">
-
+        select * from orderbook
     </select>
 
     <select id="selectOrderDetail" parameterType="com.cafe.admin.dto.OrderDTO" resultType="com.cafe.admin.dto.OrderDTO">

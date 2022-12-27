@@ -26,7 +26,8 @@ public class CategoryService {
     @Transactional
     public String deleteCategories(CategoryDTO categoryDTO) {
         int result = 0;
-
+        result+=repo.deleteCatemaps(categoryDTO);
+        result+=repo.deleteCategories(categoryDTO);
         if (result == 1) {
             return "success";
         } else {
@@ -36,8 +37,7 @@ public class CategoryService {
 
     //받은 카테고리DTO를 insert 합니다. cateType은 "PRODUCT" 고정으로 insert 합니다.
     public String insertCategories(CategoryDTO categoryDTO) {
-        int result = 0;
-
+        int result = repo.insertCategories(categoryDTO);
         if (result == 1) {
             return "success";
         } else {
@@ -48,7 +48,7 @@ public class CategoryService {
 
     //받은 카테고리DTO를 id기준으로 카테고리명을 update 합니다. cateType은 "PRODUCT" 고정입니다.
     public String updateCategories(CategoryDTO categoryDTO) {
-        int result = 0;
+        int result = repo.updateCategories(categoryDTO);
 
         if (result == 1) {
             return "success";

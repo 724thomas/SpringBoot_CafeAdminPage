@@ -4,11 +4,13 @@
 <mapper namespace="com.cafe.admin.mapper.ProductMapper">
 
     <select id="selectProducts" resultType="com.cafe.admin.dto.ProductDTO">
-
+        select * from product
     </select>
 
-    <select id="selectProduct" resultType="String">
-
+    <select id="selectProduct" parameterType="String" resultType="com.cafe.admin.dto.ProductDTO">
+        select *
+        from product
+        where id = #{id}
     </select>
 
     <delete id="deleteProducts" parameterType="com.cafe.admin.dto.ProductDTO">
@@ -20,8 +22,10 @@
     </delete>
 
     <insert id="insertProducts" parameterType="com.cafe.admin.dto.ProductDTO" useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
-
-
+        insert into product
+        (id, productname, thumb, status, price, amount, summary, content, indate, markettype, ordernum)
+        values
+        (#{id}, #{productname}, #{thumb}, #{status}, #{price}, #{amount}, #{summary}, #{content}, #{indate}, #{markettype}, #{ordernum})
     </insert>
 
 
@@ -62,8 +66,7 @@
 
 
     <select id="selectSellTimes" resultType="com.cafe.admin.dto.SellTimeDTO">
-
-
+        select * from selltime
     </select>
     <insert id="insertSellTimes" parameterType="com.cafe.admin.dto.SellTimeDTO">
         INSERT INTO SELLTIME
@@ -73,6 +76,7 @@
     </insert>
 
     <delete id="deleteSellTimes" parameterType="com.cafe.admin.dto.SellTimeDTO">
-
+        Delete from selltime
+        where id= #{id}
     </delete>
 </mapper>
